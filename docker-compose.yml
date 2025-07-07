@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  wifi-config:
+    build: .
+    container_name: wifi-config
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app/backend
+      - /etc/hostapd:/etc/hostapd
+      - /etc/wpa_supplicant:/etc/wpa_supplicant
+      - /etc/network/interfaces:/etc/network/interfaces
+      - /etc/dhcpcd.conf:/etc/dhcpcd.conf
+      - /etc/default/hostapd:/etc/default/hostapd

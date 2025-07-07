@@ -1,41 +1,24 @@
-# Delgado-Wifi
+# Delgado WiFi
 
-This project allows a Raspberry Pi to function as a configurable Wi-Fi hotspot with internet passthrough and an interactive UI for managing SSID, password, and local network routing policies.
+A self-hosted Raspberry Pi-based WiFi management app.
 
-## Features
-- Mobile-friendly dark themed UI with emoji-based icons
-- SSID/password configuration
-- Real-time client telemetry (future)
-- Network uplink management (future)
-- Local network passthrough toggle with memory per SSID (future)
+## 📦 How to Use
 
-## Setup Instructions
-
-### On the Raspberry Pi
-1. Unzip this project to a working directory:
+1. Upload this folder to your Pi:
    ```bash
-   unzip delgado-wifi.zip -d ~/Delgado-Wifi
-   cd ~/Delgado-Wifi
+   scp -r delgado-wifi pi@10.20.30.40:/opt/
    ```
 
-2. Make the script executable:
+2. SSH into the Pi and start the service:
    ```bash
-   chmod +x backend/scripts/update-hostapd.sh
+   cd /opt/delgado-wifi
+   sudo docker compose up --build -d
    ```
 
-3. Run the script to update the SSID and password:
-   ```bash
-   sudo backend/scripts/update-hostapd.sh "MySSID" "MyPassword"
-   ```
+3. Open your browser to: http://10.20.30.40
 
-4. Restart hostapd:
-   ```bash
-   sudo systemctl restart hostapd
-   ```
+## 🧰 Features (WIP)
 
-5. Upload the entire folder to your GitHub repository:
-   [https://github.com/pyrometheous/Delgado-Wifi](https://github.com/pyrometheous/Delgado-Wifi)
-
----
-
-More backend features and a Docker deployment file will follow.
+- Set SSID & Password for Pi-hosted hotspot
+- Scan and connect to nearby WiFi networks
+- Network passthrough toggle per saved SSID
